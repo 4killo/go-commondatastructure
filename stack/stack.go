@@ -2,7 +2,7 @@ package stack
 
 import "sync"
 
-//TODO: allow generic type of  stack creation like Stcak<int>.
+//TODO: allow generic type of  stack creation like Stack<int>.
 
 // Stack holds items
 type Stack struct {
