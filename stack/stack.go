@@ -18,23 +18,24 @@ func New() *Stack {
 //Push ...
 func (s *Stack) Push(i interface{}) {
 	s.sync.Lock()
+	defer s.sync.Unlock()
 	s.item = append(s.item, i)
-	s.sync.Unlock()
+
 }
 
 //Pop ...
 func (s *Stack) Pop() interface{} {
 	s.sync.Lock()
+	defer s.sync.Unlock()
 	i := s.item[len(s.item)-1]
 	s.item = s.item[0 : len(s.item)-1]
-	s.sync.Unlock()
 	return i
 }
 
 //Size of the stack
 func (s *Stack) Size() int {
 	s.sync.Lock()
+	defer s.sync.Unlock()
 	l := len(s.item)
-	s.sync.Unlock()
 	return l
 }
